@@ -178,9 +178,9 @@ void page_admin_userlist() {
 	linksArr[3] = Link(9, 40, "| 搜索 |", click_admin_userlist_search);
 	linksArr[4] = Link(9, 100, "| 添加 |", click_admin_userlist_add);
 	// 删除用户按钮区域 
-	linksArr[5] = Link(17, 71, "删除用户", click_admin_userlist_removeUser, 10);
+	linksArr[5] = Link(17, 71, "", click_admin_userlist_removeUser, 10, 8);
 	// 重置密码按钮区域 
-	linksArr[6] = Link(17, 83, "重置密码", click_admin_userlist_resetUserPassword, 10);
+	linksArr[6] = Link(17, 83, "", click_admin_userlist_resetUserPassword, 10, 8;
 	// 上一页下一页 
 	linksArr[7] = Link(30, 5, "| 上一页 |", click_admin_userlist_prevPage);
 	linksArr[8] = Link(30, 18, "| 下一页 |", click_admin_userlist_nextPage);

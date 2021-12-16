@@ -152,7 +152,7 @@ void page_user_library() {
 	linksArr[3] = Link(4, 108, "退出登录", click_logout);
 	linksArr[4] = Link(12, 100, "| 搜索 |", click_user_library_search);
 	// 删除图书按钮区域 
-	linksArr[5] = Link(18, 100, "借阅", click_user_library_borrowBook, 10);
+	linksArr[5] = Link(18, 100, "", click_user_library_borrowBook, 10, 4);
 	// 上一页下一页 
 	linksArr[6] = Link(30, 5, "| 上一页 |", click_user_library_prevPage);
 	linksArr[7] = Link(30, 18, "| 下一页 |", click_user_library_nextPage);

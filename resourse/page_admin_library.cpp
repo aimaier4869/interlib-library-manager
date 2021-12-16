@@ -151,9 +151,9 @@ void page_admin_library() {
 	linksArr[3] = Link(12, 100, "| 搜索 |", click_admin_library_search);
 	linksArr[4] = Link(14, 16, "| + 新增图书 |", click_admin_library_bookAdd);
 	// 删除图书按钮区域 
-	linksArr[5] = Link(18, 100, "删除图书", click_admin_library_removeBook, 10);
+	linksArr[5] = Link(18, 100, "", click_admin_library_removeBook, 10, 8);
 	// 修改按钮区域 
-	linksArr[6] = Link(18, 110, "修改", click_admin_library_modifyBook, 10);
+	linksArr[6] = Link(18, 110, "", click_admin_library_modifyBook, 10, 4);
 	// 上一页下一页 
 	linksArr[7] = Link(30, 5, "| 上一页 |", click_admin_library_prevPage);
 	linksArr[8] = Link(30, 18, "| 下一页 |", click_admin_library_nextPage);

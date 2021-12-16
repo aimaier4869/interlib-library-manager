@@ -95,7 +95,7 @@ void page_admin_book_add() {
 	inputBoxsArr[0] = InputBox(13, 52, "图书名称", "");
 	inputBoxsArr[1] = InputBox(16, 52, "作者", "");
 	inputBoxsArr[2] = InputBox(19, 52, "ISBN", "");
-	inputBoxsArr[3] = InputBox(22, 52, "分类号", "");
+	inputBoxsArr[3] = InputBox(22, 52, "新增页面中的分类号", "");
 	
 	if(InputBoxsArr != NULL) {
 		delete[] InputBoxsArr;

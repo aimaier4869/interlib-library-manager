@@ -79,7 +79,7 @@ void page_admin_book_modify(int index) {
 	InputBox * inputBoxsArr = new InputBox[inputBoxsArrLen];
 	inputBoxsArr[0] = InputBox(16, 52, "图书名称", lib.currentPageBooksArr[index]->name);
 	inputBoxsArr[1] = InputBox(19, 52, "作者", lib.currentPageBooksArr[index]->author);
-	inputBoxsArr[2] = InputBox(22, 52, "分类号", lib.currentPageBooksArr[index]->type);
+	inputBoxsArr[2] = InputBox(22, 52, "修改页面中的分类号", lib.currentPageBooksArr[index]->type);
 	
 	if(InputBoxsArr != NULL) {
 		delete[] InputBoxsArr;

@@ -29,7 +29,7 @@ void click_user_library_renderBookList(int len) {
 		
 		// 截取作者名称 
 		gotoxy(18 + i, 60);
-		printChar(6, ' ');
+		printChar(50, ' ');
 
 		gotoxy(18 + i, 66);
 		cout << lib.currentPageBooksArr[i]->ISBN; 
@@ -55,6 +55,8 @@ void click_user_library_renderPageInfo() {
 	string totalPageCount = to_string(lib.getTotalPageCount(10));
 	TextsArr[11].text = "当前第 " + to_string(lib.currentPageIndex) + " 页，共 " + totalPageCount + " 页。";
 	// 渲染到页面中
+	gotoxy(TextsArr[11].row, TextsArr[11].col);
+	printChar(60, ' ');
 	gotoxy(TextsArr[11].row, TextsArr[11].col);
 	printChar(TextsArr[11].text.length(), ' '); 
 	gotoxy(TextsArr[11].row, TextsArr[11].col);

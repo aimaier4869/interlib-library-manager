@@ -29,10 +29,11 @@ void click_admin_library_renderBookList(int len) {
 		
 		// 截取作者名称 
 		gotoxy(18 + i, 60);
-		printChar(6, ' ');
+		printChar(50, ' ');
 
 		gotoxy(18 + i, 66);
 		cout << lib.currentPageBooksArr[i]->ISBN; 
+		
 		gotoxy(18 + i, 86);
 		cout << lib.currentPageBooksArr[i]->type; 
 		
@@ -58,6 +59,9 @@ void click_admin_library_renderPageInfo() {
 	// 更新底部的页面信息，此时页面中索引为8的元素必是页面信息 
 	string totalPageCount = to_string(lib.getTotalPageCount(10));
 	TextsArr[11].text = "当前第 " + to_string(lib.currentPageIndex) + " 页，共 " + totalPageCount + " 页。";
+	// 清除之前的内容 
+	gotoxy(TextsArr[11].row, TextsArr[11].col);
+	printChar(60, ' ');
 	// 渲染到页面中
 	gotoxy(TextsArr[11].row, TextsArr[11].col);
 	printChar(TextsArr[11].text.length(), ' '); 

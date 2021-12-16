@@ -47,6 +47,8 @@ void click_admin_userlist_renderPageInfo() {
 	TextsArr[8].text = "当前第 " + to_string(hnuer.currentPageIndex) + " 页，共 " + totalPageCount + " 页。";
 	// 渲染到页面中
 	gotoxy(TextsArr[8].row, TextsArr[8].col);
+	printChar(60, ' ');
+	gotoxy(TextsArr[8].row, TextsArr[8].col);
 	printChar(TextsArr[8].text.length(), ' '); 
 	gotoxy(TextsArr[8].row, TextsArr[8].col);
 	cout << TextsArr[8].text;

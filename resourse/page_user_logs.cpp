@@ -54,6 +54,8 @@ void click_user_logs_renderPageInfo() {
 	TextsArr[7].text = "当前第 " + to_string(logs.currentPageIndex) + " 页，共 " + totalPageCount + " 页。";
 	// 渲染到页面中
 	gotoxy(TextsArr[7].row, TextsArr[7].col);
+	printChar(60, ' ');
+	gotoxy(TextsArr[7].row, TextsArr[7].col);
 	printChar(TextsArr[7].text.length(), ' '); 
 	gotoxy(TextsArr[7].row, TextsArr[7].col);
 	cout << TextsArr[7].text;

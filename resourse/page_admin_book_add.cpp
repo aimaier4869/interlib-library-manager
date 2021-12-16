@@ -29,6 +29,7 @@ void click_admin_library_bookAddOk(const Link & self, int row, int col) {
 		msg("分类号 不能为空！");
 		return;
 	}
+	msg("正在添加图书，请耐心等待。。。");
 	int len = lib.addBook(Book(bookName, author, ISBN, type));
 		// 是否新增成功 
 	if(len == -1) {

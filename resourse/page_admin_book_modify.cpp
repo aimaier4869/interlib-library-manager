@@ -29,6 +29,7 @@ void click_admin_library_bookModifyOk(const Link & self, int row, int col) {
 		msg("分类号 不能为空！");
 		return;
 	}
+	msg("正在修改图书，请耐心等待。。。");
 	int len = lib.modifyBook(Book(bookName, author, ISBN, type));
 		// 是否修改成功 
 	if(len == -1) {

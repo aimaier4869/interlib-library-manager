@@ -73,6 +73,7 @@ void click_admin_library_renderPageInfo() {
 void click_admin_library_search(const Link & self, int row, int col) {
 	// 此时页面中必有四个输入框，分别为图书名称，作者，ISBN，分类号
 	Book book = {InputBoxsArr[0].value, InputBoxsArr[1].value, InputBoxsArr[2].value, InputBoxsArr[3].value}; 
+	msg("正在搜索图书，请耐心等待。。。");
 	lib.searchBook(book);
 	// 渲染信息 
 	click_admin_library_renderBookList();

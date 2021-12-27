@@ -28,12 +28,10 @@ void SchoolUserList::readDataFromFile() {
 	fs >> totalCount;
 	// 关闭文件
 	fs.close();
-
-	// 如果之前有数据那就删掉
-//			if(usersArr != NULL) {
-//				delete[] usersArr;
-//				usersArr = NULL;
-//			}
+	
+	if(usersArr != NULL) {
+		delete[] usersArr;
+	}
 
 	// 开始读取每一个用户
 	usersArr = new SchoolUser[totalCount];
@@ -55,6 +53,9 @@ int SchoolUserList::searchUserByUname(string uname) {
 	// 如果什么都没输入那么跳转第1页
 	if(uname == "") {
 		return updataCurrentPage(1);
+	}
+	if(currentPageUsersArr != NULL) {
+		delete[] currentPageUsersArr;
 	}
 	// 开始查找
 	for(int i = 0; i < totalCount; i++) {

@@ -26,6 +26,12 @@ void click_admin_library_nextPage(const Link & self, int row, int col);
 // 当上一页按钮被按下
 void click_admin_library_prevPage(const Link & self, int row, int col);
 
+// 当首页按钮被按下
+void click_admin_library_firstPage(const Link & self, int row, int col);
+
+// 当尾页按钮被按下
+void click_admin_library_lastPage(const Link & self, int row, int col); 
+
 // 新增图书按钮被按下 
 void click_admin_library_bookAdd(const Link & self, int row, int col);
 

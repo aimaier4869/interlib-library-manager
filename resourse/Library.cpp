@@ -29,6 +29,9 @@ void Library::readDataFromFile() {
 	fs >> totalCount;
 	// 关闭文件
 	fs.close();
+	if(booksArr != NULL) {
+		delete[] booksArr;
+	}
 	// 开始读取每一本书的信息
 	booksArr = new Book[totalCount];
 	fs.open("database\\Library.txt", ios::in);
@@ -59,13 +62,13 @@ int Library::searchBook(Book book) {
 
 		if(book.name == "") { // 如果是空那就忽略该项
 			checkBookName = true;
-		} else if(book.name != booksArr[i].name) {
+		} else if(booksArr[i].name.find(book.name) == string::npos) { // 不包含 
 			continue;
 		}
 
 		if(book.author == "") { // 如果是空那就忽略该项
 			checkAuthor = true;
-		} else if(book.author != booksArr[i].author) {
+		} else if(booksArr[i].author.find(book.author) == string::npos) { // 不包含 
 			continue;
 		}
 
@@ -91,6 +94,7 @@ int Library::searchBook(Book book) {
 		for(int j = 0; j < len - 1; j++) {
 			tempBooksArr[j] = temp[j];
 		}
+		delete[] temp;
 		tempBooksArr[len - 1] = &booksArr[i];
 	}
 
@@ -118,6 +122,10 @@ int Library::updateCurrentPage(int pageIndex, int count) {
 
 	// 要跳转的页面的数据数量
 	int len = count;
+	
+	if(currentPageBooksArr != NULL) {
+		delete[] currentPageBooksArr;
+	}
 
 	// 总表中渲染
 	if(!updatePageMode) {

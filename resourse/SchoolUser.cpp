@@ -53,4 +53,7 @@ void SchoolUser::changePwd(string pwd) {
 	};
 	// ╧ь╠унд╪Ч
 	fs.close();
+	if(usersArr != NULL) {
+		delete[] usersArr;
+	}
 };

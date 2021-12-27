@@ -136,6 +136,42 @@ void click_admin_library_prevPage(const Link & self, int row, int col) {
 	msg("已为你跳转到第 " + to_string(prevPage) + " 页");
 }
 
+// 当首页按钮被按下
+void click_admin_library_firstPage(const Link & self, int row, int col) {
+	int prevPage = lib.currentPageIndex;
+	if(prevPage == 1) {
+		msg("你当前正在浏览首页");
+		return;
+	}
+	// 切换页面 
+	lib.updateCurrentPage(1);
+	click_admin_library_renderBookList(lib.currentPageCount);
+	
+	// 更新底部的页面信息，此时页面中索引为8的元素必是页面信息 
+	click_admin_library_renderPageInfo();
+	
+	msg("已为你跳转到第 1 页");
+}
+
+// 当尾页按钮被按下
+void click_admin_library_lastPage(const Link & self, int row, int col) {
+	int totalPage = lib.getTotalPageCount(10); 
+	int nextPage = lib.currentPageIndex;
+	if(nextPage == totalPage) {
+		msg("你当前正在浏览尾页");
+		return;
+	}
+	// 切换页面 
+	lib.updateCurrentPage(totalPage);
+	click_admin_library_renderBookList(lib.currentPageCount);
+	
+	// 更新底部的页面信息，此时页面中索引为8的元素必是页面信息 
+	click_admin_library_renderPageInfo();
+	
+	msg("已为你跳转到第 " + to_string(totalPage) + " 页");
+}
+
+
 // 新增图书按钮被按下 
 void click_admin_library_bookAdd(const Link & self, int row, int col) {
 	checkoutPage("page_admin_book_add"); 
@@ -144,7 +180,7 @@ void click_admin_library_bookAdd(const Link & self, int row, int col) {
 
 void page_admin_library() {
 	// Links
-	linksArrLen = 9;
+	linksArrLen = 11;
 	Link * linksArr = new Link[linksArrLen];// 创建数组 
 	linksArr[0] = Link(4, 3, "用户管理",  click_tab_userlist);
 	linksArr[1] = Link(4, 20, "*图书管理", click_tab_library);
@@ -155,9 +191,11 @@ void page_admin_library() {
 	linksArr[5] = Link(18, 100, "", click_admin_library_removeBook, 10, 8);
 	// 修改按钮区域 
 	linksArr[6] = Link(18, 110, "", click_admin_library_modifyBook, 10, 4);
-	// 上一页下一页 
-	linksArr[7] = Link(30, 5, "| 上一页 |", click_admin_library_prevPage);
-	linksArr[8] = Link(30, 18, "| 下一页 |", click_admin_library_nextPage);
+	// 首页上一页下一页尾页 
+	linksArr[7] = Link(30, 5, "| 首页 |", click_admin_library_firstPage);
+	linksArr[8] = Link(30, 14, "| 上一页 |", click_admin_library_prevPage);
+	linksArr[9] = Link(30, 25, "| 下一页 |", click_admin_library_nextPage);
+	linksArr[10] = Link(30, 36, "| 尾页 |", click_admin_library_lastPage);
 	
 	if(LinksArr != NULL) {// 释放原本数组内容并重新指定 
 		delete[] LinksArr;
@@ -178,7 +216,7 @@ void page_admin_library() {
 	textsArr[8] = Text(16, 66, "ISBN");
 	textsArr[9] = Text(16, 86, "分类号");
 	textsArr[10] = Text(16, 100, "操作");
-	textsArr[11] = Text(30, 30, ""); // 这是分页信息 
+	textsArr[11] = Text(30, 45, ""); // 这是分页信息 
 	textsArr[11].text = "当前第 1 页，共 1 页。";
 	
 	if(TextsArr != NULL) {

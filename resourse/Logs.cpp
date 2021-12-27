@@ -31,6 +31,9 @@ void Logs::readDataFromFile() {
 	fs >> totalCount;
 	// 关闭文件
 	fs.close();
+	if(logsArr != NULL) {
+		delete[] logsArr;
+	}
 	// 开始读取每一条记录的信息
 	logsArr = new Log[totalCount];
 	
@@ -54,6 +57,9 @@ void Logs::updateCurrentUserLogs() {
 		}
 	}
 	tempLogsArrLen = len;
+	if(tempLogsArr != NULL) {
+		delete[] tempLogsArr;
+	}
 	// 经过重重验证终于到这里了
 	tempLogsArr = new Log*[len]; // 新建长度为len的数组
 	for(int i = 0, z = 0; i < totalCount; i++) {
@@ -68,6 +74,9 @@ int Logs::searchLogByISBN(string ISBN) {
 	// 如果什么都没输入那么跳转第1页
 	if(ISBN == "") {
 		return updateCurrentPage(1);
+	}
+	if(currentPageLogsArr != NULL) {
+		delete[] currentPageLogsArr;
 	}
 	// 开始查找
 	for(int i = 0; i < tempLogsArrLen; i++) {

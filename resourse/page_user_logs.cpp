@@ -31,7 +31,7 @@ void click_user_logs_renderLogs(int len) {
 			// 如果是0输出尚未归还
 			cout << "尚未归还"; 
 		}else {
-			cout << "";
+			cout << "在馆";
 		}
 		
 	}

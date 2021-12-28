@@ -3,7 +3,7 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-// 提供全局变量
+// 页面中的元素声明 
 #include <iostream>
 #include <conio.h> // 用到getch
 using namespace std;

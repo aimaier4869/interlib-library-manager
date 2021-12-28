@@ -76,7 +76,7 @@
     - 搜索`TP3`会找到所有`工业技术 > 自动化技术、计算机技术 > 计算技术、计算机技术`类书籍
     - 搜索`TP31`会找到所有`工业技术 > 自动化技术、计算机技术 > 计算技术、计算机技术 > 计算机软件`类书籍等等
     
-19. 以上四条内容可以进行联合搜索，例如你可以查找某个作者分类为XX的所有书
+19. 以上四条内容可以进行联合搜索，例如你可以查找某个作者分类为XX的所有书，搜索结果以字典序排序
 20. 图书列表依然以分页的形式展现，每页展示10条，可以通过点击页面中的下一页，上一页按钮进行换页，并且可以通过点击首页，尾页按钮跳转到第一页和最后一页
 
 ### 新增修改图书
@@ -92,7 +92,7 @@
 26. 以普通用户模式登陆后会跳转到借阅图书页面，页面中的搜索功能与管理员图书管理页面一致
 27. 可以点击行末的`借阅`按钮借阅图书，如果已经借过这本书并且尚未归还时不能再次借阅该书
 28. 可以在借阅记录页面中通过`ISBN`精确查找到自己记录中的某一个本书
-29. 借阅后尚未归还的书籍会在`状态`处标记尚未归还，并会有`归还`操作按钮，已归还的书籍的状态处显示空，操作按钮也不会显示
+29. 借阅后尚未归还的书籍会在`状态`处标记尚未归还，并会有`归还`操作按钮，已归还的书籍的状态处显示在馆，操作按钮不会显示
 
 ### 借阅记录
 
@@ -172,7 +172,51 @@
 #### void click_XXX(const Link & self, int row, int col)
 一般会在`page_[admin | user]_XXX.h`文件中声明若干个，表示页面中`Link`类型元素的点击事件，一般功能不相同的每个`Link`类型的实例都会有自己独有的点击事件，当通过`Link`类的构造函数实例化一个`Link`类时将该函数作为实参传给`Link`的构造函数，当`listener`调用某个`Link`的`click`函数时在函数体内作为回调函数调用该函数
 
-### 类（部分）
+### 类
+
+#### Link 类
+可点击的文本类，表示页面中的一个可点击的文本
+1. 构造函数
+    - Link(); // 无参构造
+    - Link(int row, int col, string text, void (*handle)(const Link & self, int row, int col), int height = 1, int width = 0); // 有参构造
+2. 公共数据成员
+    - string text; // 显示的文字
+    - int col; // 所在列（相当于页面中的x坐标）
+    - int row; // 所在行（相当于页面中的y坐标）
+    - int width; // 宽度
+    - int height; // 高度
+    - void (*handle)(const Link & self, int row, int col); // 回调函数，被判定为点击时调用该函数
+3. 公共成员函数
+    - bool check(int row, int col); // 验证是否点击了自己
+    - void click(int row, int col); // 点击函数，被点击时调用
+
+#### Text 类
+只用于显示的文本类，表示页面中的一个只用于显示的文本
+1. 构造函数
+    - Text(); // 无参构造
+    - Text(int row, int col, string text); // 有参构造
+2. 公共数据成员
+    - string text; // 显示的文字
+    - int col; // 所在列（相当于页面中的x坐标）
+    - int row; // 所在行（相当于页面中的y坐标）
+
+#### InputBox 类
+输入框类，表示页面中的一个输入框
+1. 构造函数
+    - InputBox(); // 无参构造
+    - InputBox(int row, int col, string label = "输入框内容", string value = "", int height = 2, int width = 0); // 有参构造
+2. 公共数据成员
+    - string label; // 显示的文字
+    - string value; // 输入框的值
+    - int col; // 所在列（相当于页面中的x坐标）
+    - int row; // 所在行（相当于页面中的y坐标）
+    - int width; // 宽度
+    - int height; // 高度
+    - bool isPassword; // 是否是一个密码框
+3. 公共成员函数
+    - bool check(int row, int col); // 验证是否点击了自己
+    - void renderValue(); // 将自己的value渲染到页面中
+    - void click(int row, int col); // 点击函数，被点击时调用
 
 #### Book 类
 图书类，描述一本书

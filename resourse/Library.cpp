@@ -97,6 +97,17 @@ int Library::searchBook(Book book) {
 		delete[] temp;
 		tempBooksArr[len - 1] = &booksArr[i];
 	}
+	
+	// 按书名字典序排序
+	for(int i = 0; i < len - 1; i++) {
+		for(int j = 0; j < len - i - 1; j++) {
+			if(tempBooksArr[j]->name > tempBooksArr[j + 1]->name) {
+				Book * temp = tempBooksArr[j];
+				tempBooksArr[j] = tempBooksArr[j + 1];
+				tempBooksArr[j + 1] = temp;
+			}
+		}
+	} 
 
 	// 有搜索结果了，分页要用临时数组展示
 	updatePageMode = 1;
@@ -202,6 +213,8 @@ void Library::removeBook(int index) {
 // 新增图书，新增成功返回当前页图书数量 ,失败了返回-1
 int Library::addBook(Book book) {
 	if(searchBook(Book("", "", book.ISBN, ""))) {
+		// debug:这里再次搜索是为了修复重复点击几次添加按钮后不能换页的BUG 
+		searchBook(Book("", "", "", ""));
 		return -1;
 	}
 	// 添加图书，添加到最前面

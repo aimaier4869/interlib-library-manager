@@ -54,9 +54,10 @@ int SchoolUserList::searchUserByUname(string uname) {
 	if(uname == "") {
 		return updataCurrentPage(1);
 	}
-	if(currentPageUsersArr != NULL) {
-		delete[] currentPageUsersArr;
-	}
+	// debug:[danger]重大BUG 
+//	if(currentPageUsersArr != NULL) {
+//		delete[] currentPageUsersArr;
+//	}
 	// 开始查找
 	for(int i = 0; i < totalCount; i++) {
 		if(uname == usersArr[i].username) {
@@ -166,6 +167,7 @@ void SchoolUserList::removeUser(int index) {
 // 新增用户，新增成功返回当前页用户数量 ,失败了返回-1
 int SchoolUserList::addUserByUname(string uname) {
 	if(searchUserByUname(uname)) {
+		searchUserByUname(""); 
 		return -1;
 	}
 	// 添加用户，添加到最前面

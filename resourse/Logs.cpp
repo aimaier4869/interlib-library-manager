@@ -82,7 +82,6 @@ int Logs::searchLogByISBN(string ISBN) {
 	for(int i = 0; i < tempLogsArrLen; i++) {
 		if(ISBN == tempLogsArr[i]->ISBN) {
 			// 找到了
-			// debug 解除下面一行注释时会报错
 			currentPageLogsArr = new Log*[1]; // 新建长度为1的数组
 			currentPageLogsArr[0] = tempLogsArr[i];
 			currentPageCount = 1;

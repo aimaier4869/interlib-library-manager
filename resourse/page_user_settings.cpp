@@ -21,7 +21,7 @@ void click_user_settings_changePwdOk(const Link & self, int row, int col) {
 		msg("新密码不能为空！");
 		return; 
 	}
-	if(againNewPwd == "" && againNewPwd != newPwd) {
+	if(againNewPwd != newPwd) {
 		msg("两次输入的新密码不一致！");
 		return; 
 	}
